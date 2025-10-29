@@ -283,8 +283,9 @@ db.connect((err) => {
 });
 
 // Create table if not exists
+// CREATE TABLE IF NOT EXISTS Biotech_Abstractforms (
 const createTableQuery = `
-  CREATE TABLE IF NOT EXISTS Biotech_Abstractforms (
+    CREATE TABLE IF NOT EXISTS Robotics_Abstractforms (
     id INT AUTO_INCREMENT PRIMARY KEY,
     title VARCHAR(255),
     fullName VARCHAR(255) NOT NULL,
@@ -299,7 +300,7 @@ const createTableQuery = `
 
 db.query(createTableQuery, (err) => {
   if (err) console.error("Error creating table:", err);
-  else console.log("Table 'Biotech_Abstractforms' is ready!");
+  else console.log("Table 'Robotics_Abstractforms' is ready!");
 });
 
 // FTP Upload Function (Fixed & Final)
@@ -349,7 +350,7 @@ async function uploadToFTP(fileBuffer, originalName) {
 
 // GET: Fetch all abstracts
 app.get("/api/abstracts", (req, res) => {
-  const query = "SELECT * FROM Biotech_Abstractforms ORDER BY created_at DESC";
+  const query = "SELECT * FROM Robotics_Abstractforms ORDER BY created_at DESC";
   db.query(query, (err, results) => {
     if (err) {
       console.error("Error retrieving abstracts:", err);
@@ -381,7 +382,7 @@ app.post("/api/abstracts", upload.single("document"), async (req, res) => {
 
   // Insert into database
   const query = `
-    INSERT INTO Biotech_Abstractforms 
+    INSERT INTO Robotics_Abstractforms 
     (title, fullName, phoneNumber, emailAddress, organization, country, document_url)
     VALUES (?, ?, ?, ?, ?, ?, ?)
   `;
