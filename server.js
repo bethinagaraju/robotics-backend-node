@@ -318,7 +318,7 @@ app.post("/api/abstracts", upload.single("document"), async (req, res) => {
 
         const mailOptions = {
           from: "smtp@roboticsaisummit.com",
-          to: "bethinagaraju04@gmail.com",
+          to: "secretary@roboticsaisummit.com",
           subject: "Your Abstract Submission Was Successful",
           html: `
             <h2>Abstract Submission Details</h2>
@@ -329,8 +329,6 @@ app.post("/api/abstracts", upload.single("document"), async (req, res) => {
             <p><b>Organization:</b> ${organization}</p>
             <p><b>Country:</b> ${country}</p>
             <p><b>Submitted Document URL:</b> <a href="${documentUrl}" target="_blank">${documentUrl}</a></p>
-            <br/>
-            <p>Thank you for your submission! We will review it soon.</p>
           `,
         };
 
